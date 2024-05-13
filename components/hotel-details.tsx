@@ -103,7 +103,7 @@ const HotelDetail = ({hotel}: HotelDetailsProps) => {
             <h2 className="text-2xl font-bold capitalize">{hotel.title}</h2>
             <h3 className="mt-5 text-xl">{hotel.description}</h3>
           </div>
-          <h4 className="bg-primary flex h-36 w-36 flex-col items-center justify-center rounded-full">
+          <h4 className="flex h-36 w-36 flex-col items-center justify-center rounded-full bg-primary">
             <span className="text-xl font-bold">Price:</span>
             <span className="font-bold">
               {parseInt(hotel.price) - parseInt(hotel.discount)} / per night
@@ -135,7 +135,7 @@ const HotelDetail = ({hotel}: HotelDetailsProps) => {
         </div>
         <p className="text-base">{hotel.content}</p>
         <div className="flex gap-5">
-          <div className="border-primary flex items-center gap-3 rounded border p-5">
+          <div className="flex items-center gap-3 rounded border border-primary p-5">
             <Image
               src={hotel.owner.image.url}
               alt={hotel.owner.image.public_id}
@@ -149,7 +149,7 @@ const HotelDetail = ({hotel}: HotelDetailsProps) => {
               <h5>{hotel.owner.email}</h5>
             </div>
           </div>
-          <div className="border-primary flex items-center gap-3 rounded border p-5">
+          <div className="flex items-center gap-3 rounded border border-primary p-5">
             <Image
               src={hotel.category.image.url}
               alt={hotel.category.image.public_id}

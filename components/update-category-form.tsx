@@ -133,7 +133,7 @@ const UpdateCategoryForm = ({category}: Props) => {
               type="file"
               accept=".png, .jpg, .jpeg"
               placeholder="Add your image"
-              className="file:text-primary cursor-pointer border-none bg-transparent text-black outline-none dark:text-white"
+              className="cursor-pointer border-none bg-transparent text-black outline-none file:text-primary dark:text-white"
               hidden
               onChange={(e) => handleImageChange(e.target.files)}
             />

@@ -37,7 +37,7 @@ const Header = ({user}: {user: any}) => {
           </Link>
           <div className="md:hidden">
             <button
-              className="text-primary rounded-md p-2 outline-none"
+              className="rounded-md p-2 text-primary outline-none"
               onClick={() => setOpen(!open)}
             >
               {open ? <X /> : <Menu />}

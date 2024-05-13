@@ -13,7 +13,7 @@ export default function RegisterPage() {
         <RegisterForm />
         <p className="text-sm">
           Already have an account?{" "}
-          <Link href={"/login"} className="text-primary text-sm">
+          <Link href={"/login"} className="text-sm text-primary">
             Login
           </Link>
         </p>

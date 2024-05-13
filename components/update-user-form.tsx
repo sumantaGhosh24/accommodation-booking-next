@@ -150,7 +150,7 @@ const UpdateUserForm = ({user}: UpdateUserFormProps) => {
                 alt={user.image.public_id}
                 height={200}
                 width={500}
-                className="mb-5 mx-auto h-[300px] w-[65%]"
+                className="mx-auto mb-5 h-[300px] w-[65%]"
               />
             )}
             <div className="flex items-center gap-4">
@@ -170,7 +170,7 @@ const UpdateUserForm = ({user}: UpdateUserFormProps) => {
                   type="file"
                   accept=".png, .jpg, .jpeg"
                   placeholder="Add your image"
-                  className="file:text-primary cursor-pointer border-none bg-transparent outline-none"
+                  className="cursor-pointer border-none bg-transparent outline-none file:text-primary"
                   hidden
                   onChange={(e) => handleImageChange(e.target.files)}
                 />

@@ -12,7 +12,7 @@ const BookingDetails = ({booking}: {booking: IBooking}) => {
       <div className="w-[95%] space-y-4 rounded-lg p-5 shadow-lg shadow-black dark:shadow-white">
         <h1 className="mb-5 text-2xl font-bold">Booking Details</h1>
         <div className="flex gap-5">
-          <div className="border-primary flex items-center gap-3 rounded border p-5">
+          <div className="flex items-center gap-3 rounded border border-primary p-5">
             <Image
               src={booking.user.image.url}
               alt={booking.user.image.public_id}
@@ -26,7 +26,7 @@ const BookingDetails = ({booking}: {booking: IBooking}) => {
               <h5>{booking.user.email}</h5>
             </div>
           </div>
-          <div className="border-primary flex items-center gap-3 rounded border p-5">
+          <div className="flex items-center gap-3 rounded border border-primary p-5">
             <Image
               src={booking.hotel.image[0].url}
               alt={booking.hotel.image[0].public_id}

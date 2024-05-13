@@ -13,7 +13,7 @@ export default function LoginPage() {
         <LoginForm />
         <p className="text-sm">
           Don&apos;t have an account?{" "}
-          <Link href={"/register"} className="text-primary text-sm">
+          <Link href={"/register"} className="text-sm text-primary">
             Register
           </Link>
         </p>

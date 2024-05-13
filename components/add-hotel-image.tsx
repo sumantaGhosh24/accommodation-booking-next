@@ -90,7 +90,7 @@ const AddHotelImage = ({hotel}: AddHotelImageProps) => {
         >
           <h1 className="mb-5 text-2xl font-bold">Add Hotel Image</h1>
           <div
-            className="border-primary mb-5 mt-9 flex w-full items-center justify-center rounded border-4 border-dashed p-8 text-center"
+            className="mb-5 mt-9 flex w-full items-center justify-center rounded border-4 border-dashed border-primary p-8 text-center"
             onDrop={handleDrop}
             onDrag={(e) => e.preventDefault()}
           >

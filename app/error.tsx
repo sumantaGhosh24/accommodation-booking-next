@@ -2,8 +2,6 @@
 
 import {useEffect} from "react";
 
-import EmptyState from "@/components/empty-state";
-
 interface ErrorStateProps {
   error: Error;
 }
@@ -15,7 +13,8 @@ const ErrorState = ({error}: ErrorStateProps) => {
 
   return (
     <div className="flex h-screen items-center">
-      <EmptyState title="Error!" subtitle="Something Went Wrong!" />
+      <h1>Error</h1>
+      <h3>Something Went Wrong!</h3>
     </div>
   );
 };

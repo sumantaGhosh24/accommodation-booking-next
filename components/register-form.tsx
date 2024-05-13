@@ -144,7 +144,7 @@ const RegisterForm = () => {
                 type="file"
                 accept=".png, .jpg, .jpeg"
                 placeholder="Add your image"
-                className="file:text-primary cursor-pointer border-none bg-transparent outline-none"
+                className="cursor-pointer border-none bg-transparent outline-none file:text-primary"
                 hidden
                 onChange={(e) => handleImageChange(e.target.files)}
               />
