@@ -48,89 +48,27 @@ export interface IHotel extends Document {
 
 const HotelSchema = new Schema(
   {
-    owner: {
-      type: Schema.Types.ObjectId,
-      required: true,
-      ref: "User",
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    content: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    image: [
-      {
-        url: String,
-        public_id: String,
-        blurHash: String,
-      },
-    ],
-    category: {
-      type: Schema.Types.ObjectId,
-      required: true,
-      ref: "Category",
-    },
-    price: {
-      type: String,
-      required: true,
-    },
-    discount: {
-      type: String,
-      required: true,
-    },
-    specialNote: {
-      type: String,
-    },
-    dimension: {
-      type: String,
-    },
-    numberOfBeds: {
-      type: String,
-    },
+    owner: {type: Schema.Types.ObjectId, required: true, ref: "User"},
+    title: {type: String, required: true},
+    description: {type: String, required: true, trim: true},
+    content: {type: String, required: true, trim: true},
+    image: [{url: String, public_id: String, blurHash: String}],
+    category: {type: Schema.Types.ObjectId, required: true, ref: "Category"},
+    price: {type: String, required: true},
+    discount: {type: String, required: true},
+    specialNote: {type: String},
+    dimension: {type: String},
+    numberOfBeds: {type: String},
     offeredAmenities: [String],
-    isBooked: {
-      type: Boolean,
-    },
-    isFeatured: {
-      type: Boolean,
-    },
-    country: {
-      type: String,
-      required: true,
-    },
-    state: {
-      type: String,
-      required: true,
-    },
-    city: {
-      type: String,
-      required: true,
-    },
-    zip: {
-      type: String,
-      required: true,
-    },
-    address: {
-      type: String,
-      required: true,
-    },
-    latitude: {
-      type: String,
-      required: true,
-    },
-    longitude: {
-      type: String,
-      required: true,
-    },
+    isBooked: {type: Boolean},
+    isFeatured: {type: Boolean},
+    country: {type: String, required: true},
+    state: {type: String, required: true},
+    city: {type: String, required: true},
+    zip: {type: String, required: true},
+    address: {type: String, required: true},
+    latitude: {type: String, required: true},
+    longitude: {type: String, required: true},
   },
   {timestamps: true}
 );

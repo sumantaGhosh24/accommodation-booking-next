@@ -65,7 +65,7 @@ const AddHotelImage = ({hotel}: AddHotelImageProps) => {
     // eslint-disable-next-line array-callback-return
     [...files].map((file) => {
       const result = validFiles(file);
-      setFiles((prev) => [...prev, result]);
+      setFiles((prev) => [...prev, result] as any);
     });
   };
 
@@ -83,7 +83,7 @@ const AddHotelImage = ({hotel}: AddHotelImageProps) => {
     <div className="my-20 flex w-full items-center justify-center">
       <div className="min-w-[80%] space-y-4 rounded-lg p-5 shadow-lg shadow-black dark:shadow-white">
         <form
-          className="flex flex-col justify-start gap-10"
+          className="flex flex-col justify-start gap-5"
           onSubmit={handleSubmit}
           onDrop={handleDrop}
           onDrag={(e) => e.preventDefault()}

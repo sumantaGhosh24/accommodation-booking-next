@@ -66,7 +66,7 @@ const AddReview = ({hotel, user}: AddReviewProps) => {
       <div className="w-[95%] space-y-4 rounded-lg p-5 shadow-lg shadow-black dark:shadow-white">
         <Form {...form}>
           <form
-            className="flex flex-col justify-start gap-10"
+            className="flex flex-col justify-start gap-5"
             onSubmit={form.handleSubmit(onSubmit)}
           >
             <h1 className="mb-5 text-2xl font-bold">Create Category</h1>

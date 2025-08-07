@@ -42,65 +42,23 @@ export interface IBooking extends Document {
 
 const BookingSchema = new Schema(
   {
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
-    hotel: {
-      type: Schema.Types.ObjectId,
-      ref: "Hotel",
-      required: true,
-    },
-    checkInDate: {
-      type: String,
-      required: true,
-    },
-    checkOutDate: {
-      type: String,
-      required: true,
-    },
-    numberOfDays: {
-      type: String,
-      required: true,
-    },
-    adults: {
-      type: String,
-      required: true,
-    },
-    childrens: {
-      type: String,
-      required: true,
-    },
-    totalPrice: {
-      type: String,
-      required: true,
-    },
+    user: {type: Schema.Types.ObjectId, ref: "User", required: true},
+    hotel: {type: Schema.Types.ObjectId, ref: "Hotel", required: true},
+    checkInDate: {type: String, required: true},
+    checkOutDate: {type: String, required: true},
+    numberOfDays: {type: String, required: true},
+    adults: {type: String, required: true},
+    childrens: {type: String, required: true},
+    totalPrice: {type: String, required: true},
     paymentResult: {
-      id: {
-        type: String,
-      },
-      status: {
-        type: String,
-      },
-      razorpay_order_id: {
-        type: String,
-      },
-      razorpay_payment_id: {
-        type: String,
-      },
-      razorpay_signature: {
-        type: String,
-      },
+      id: {type: String},
+      status: {type: String},
+      razorpay_order_id: {type: String},
+      razorpay_payment_id: {type: String},
+      razorpay_signature: {type: String},
     },
-    status: {
-      type: String,
-      default: "pending",
-    },
-    isPaid: {
-      type: Boolean,
-      default: false,
-    },
+    status: {type: String, default: "pending"},
+    isPaid: {type: Boolean, default: false},
   },
   {timestamps: true}
 );

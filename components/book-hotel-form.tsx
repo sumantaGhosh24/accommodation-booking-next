@@ -4,7 +4,6 @@ import {useState} from "react";
 import {useRouter} from "next/navigation";
 import toast from "react-hot-toast";
 
-import {RAZORPAY_KEY} from "@/libs/config";
 import {IHotel} from "@/models/hotelModel";
 
 import {Button} from "./ui/button";
@@ -33,7 +32,7 @@ const BookHotelForm = ({hotel, user}: BookHotelFormProps) => {
       return;
     }
 
-    if (adults == 0) {
+    if (Number(adults) == 0) {
       toast.error("Al least on adult required");
       return;
     }
@@ -51,7 +50,7 @@ const BookHotelForm = ({hotel, user}: BookHotelFormProps) => {
     });
     const order = await data.json();
     const options = {
-      key: RAZORPAY_KEY,
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY,
       name: "Book Sports Ticket",
       description: "Book your favorite match ticket.",
       currency: order.order.currency,

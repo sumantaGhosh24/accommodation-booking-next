@@ -180,7 +180,7 @@ const CreateHotelForm = ({categories}: CreateHotelFormProps) => {
     // eslint-disable-next-line array-callback-return
     [...files].map((file) => {
       const result = validFiles(file);
-      setFiles((prev) => [...prev, result]);
+      setFiles((prev) => [...prev, result] as any);
     });
   };
 
@@ -197,7 +197,7 @@ const CreateHotelForm = ({categories}: CreateHotelFormProps) => {
   return (
     <Form {...form}>
       <form
-        className="flex flex-col justify-start gap-10"
+        className="flex flex-col justify-start gap-5"
         onSubmit={form.handleSubmit(onSubmit)}
         onDrop={handleDrop}
         onDrag={(e) => e.preventDefault()}
