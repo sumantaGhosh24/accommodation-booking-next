@@ -28,28 +28,26 @@ const Home = async ({searchParams}: SearchParamProps) => {
   const categories = await getCategories();
 
   return (
-    <>
-      <div className="my-5 p-8">
-        <div className="mb-8 text-left">
-          <h2 className="mb-4 text-3xl font-bold">All Hotels</h2>
-          <p className="text-gray-600">Explore all hotels.</p>
-        </div>
-        <div className="mb-8 flex w-full flex-col gap-5 md:flex-row">
-          <SearchBar placeholder="Search hotels" />
-          <Filter categories={categories} />
-        </div>
-        <div>
-          <Hotels
-            data={hotels?.data}
-            emptyTitle="No Hotels Found"
-            emptyStateSubtext="Try again later"
-            limit={6}
-            page={page}
-            totalPages={hotels?.totalPages}
-          />
-        </div>
+    <div className="container mx-auto my-5 p-8">
+      <div className="mb-8 text-left">
+        <h2 className="mb-4 text-3xl font-bold">All Hotels</h2>
+        <p className="text-gray-600">Explore all hotels.</p>
       </div>
-    </>
+      <div className="mb-8 flex w-full flex-col gap-5 md:flex-row">
+        <SearchBar placeholder="Search hotels" />
+        <Filter categories={categories} />
+      </div>
+      <div>
+        <Hotels
+          data={hotels?.data}
+          emptyTitle="No Hotels Found"
+          emptyStateSubtext="Try again later"
+          limit={6}
+          page={page}
+          totalPages={hotels?.totalPages}
+        />
+      </div>
+    </div>
   );
 };
 

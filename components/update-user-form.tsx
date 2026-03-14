@@ -134,48 +134,48 @@ const UpdateUserForm = ({user}: UpdateUserFormProps) => {
   };
 
   return (
-    <div className="my-10 flex w-full items-center justify-center">
-      <div className="w-[95%] space-y-4 rounded-lg p-5 shadow-lg shadow-black dark:shadow-white">
-        <Form {...form}>
-          <form
-            className="flex flex-col justify-start gap-5"
-            onDrop={handleDrop}
-            onDragOver={(e) => e.preventDefault()}
-            onSubmit={form.handleSubmit(onSubmit)}
-          >
-            <h1 className="mb-5 text-2xl font-bold">Update User</h1>
-            {user.image && (
+    <div className="my-10 rounded-md p-8 shadow-md dark:shadow-gray-400">
+      <Form {...form}>
+        <form
+          className="flex flex-col justify-start gap-5"
+          onDrop={handleDrop}
+          onDragOver={(e) => e.preventDefault()}
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
+          <h1 className="mb-5 text-2xl font-bold">Update User</h1>
+          {user.image && (
+            <Image
+              src={user.image.url}
+              alt={user.image.public_id}
+              height={200}
+              width={500}
+              className="mx-auto mb-5 h-[300px] w-[65%]"
+            />
+          )}
+          <div className="flex items-center gap-4">
+            <div className="flex items-center justify-center rounded-full bg-black">
               <Image
-                src={user.image.url}
-                alt={user.image.public_id}
-                height={200}
-                width={500}
-                className="mx-auto mb-5 h-[300px] w-[65%]"
+                src={file?.imgUrl || "https://placehold.co/600x400.png"}
+                alt="image"
+                width={150}
+                height={150}
+                sizes="50vw"
+                priority
+                className="h-24 w-24 rounded-full object-cover"
               />
-            )}
-            <div className="flex items-center gap-4">
-              <div className="flex items-center justify-center rounded-full bg-black">
-                <Image
-                  src={file?.imgUrl || "https://placehold.co/600x400.png"}
-                  alt="image"
-                  width={150}
-                  height={150}
-                  sizes="50vw"
-                  priority
-                  className="h-24 w-24 rounded-full object-cover"
-                />
-              </div>
-              <div className="flex-1 text-base font-semibold text-gray-200">
-                <Input
-                  type="file"
-                  accept=".png, .jpg, .jpeg"
-                  placeholder="Add your image"
-                  className="cursor-pointer border-none bg-transparent outline-none file:text-primary"
-                  hidden
-                  onChange={(e) => handleImageChange(e.target.files)}
-                />
-              </div>
             </div>
+            <div className="flex-1 text-base font-semibold text-gray-200">
+              <Input
+                type="file"
+                accept=".png, .jpg, .jpeg"
+                placeholder="Add your image"
+                className="cursor-pointer border-none bg-transparent outline-none file:text-primary"
+                hidden
+                onChange={(e) => handleImageChange(e.target.files)}
+              />
+            </div>
+          </div>
+          <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
             <FormField
               control={form.control}
               name="name"
@@ -216,12 +216,16 @@ const UpdateUserForm = ({user}: UpdateUserFormProps) => {
                 </FormItem>
               )}
             />
+          </div>
+          <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
             <FormField
               control={form.control}
               name="dob"
               render={({field}) => (
-                <FormItem className="flex flex-col">
-                  <FormLabel>Date of birth</FormLabel>
+                <FormItem className="flex w-full flex-col">
+                  <FormLabel className="mb-3 font-bold">
+                    Date of birth
+                  </FormLabel>
                   <Popover>
                     <PopoverTrigger asChild>
                       <FormControl>
@@ -277,6 +281,8 @@ const UpdateUserForm = ({user}: UpdateUserFormProps) => {
                 </FormItem>
               )}
             />
+          </div>
+          <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
             <FormField
               control={form.control}
               name="city"
@@ -337,6 +343,8 @@ const UpdateUserForm = ({user}: UpdateUserFormProps) => {
                 </FormItem>
               )}
             />
+          </div>
+          <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
             <FormField
               control={form.control}
               name="zip"
@@ -375,12 +383,12 @@ const UpdateUserForm = ({user}: UpdateUserFormProps) => {
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={loading} className="max-w-fit">
-              {loading ? "Processing..." : "Update User"}
-            </Button>
-          </form>
-        </Form>
-      </div>
+          </div>
+          <Button type="submit" disabled={loading} className="max-w-fit">
+            {loading ? "Processing..." : "Update User"}
+          </Button>
+        </form>
+      </Form>
     </div>
   );
 };

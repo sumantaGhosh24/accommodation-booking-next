@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import {IReview} from "@/models/reviewModel";
 
-import Pagination from "./Pagination";
+import Pagination from "./pagination";
 import {
   Table,
   TableBody,

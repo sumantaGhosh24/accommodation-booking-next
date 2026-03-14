@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import {Calendar, Users, CreditCard} from "lucide-react";
 
 import {IBooking} from "@/models/bookingModel";
 
@@ -8,66 +9,116 @@ import {Badge} from "./ui/badge";
 
 const BookingDetails = ({booking}: {booking: IBooking}) => {
   return (
-    <div className="my-10 flex w-full items-center justify-center">
-      <div className="w-[95%] space-y-4 rounded-lg p-5 shadow-lg shadow-black dark:shadow-white">
-        <h1 className="mb-5 text-2xl font-bold">Booking Details</h1>
-        <div className="flex gap-5">
-          <div className="flex items-center gap-3 rounded border border-primary p-5">
-            <Image
-              src={booking.user.image.url}
-              alt={booking.user.image.public_id}
-              height={100}
-              width={100}
-              className="rounded"
-            />
-            <div>
-              <h4 className="mb-2">User: </h4>
-              <h4 className="mb-2 capitalize">{booking.user.name}</h4>
-              <h5>{booking.user.email}</h5>
-            </div>
-          </div>
-          <div className="flex items-center gap-3 rounded border border-primary p-5">
-            <Image
-              src={booking.hotel.image[0].url}
-              alt={booking.hotel.image[0].public_id}
-              height={100}
-              width={100}
-              className="rounded"
-            />
-            <div>
-              <h4 className="mb-2">Hotel: </h4>
-              <h4>{booking.hotel.title}</h4>
-            </div>
+    <div className="container mx-auto my-10 space-y-8 rounded-md py-10 shadow-md dark:shadow-gray-400">
+      <div>
+        <h1 className="text-3xl font-bold">Booking Details</h1>
+        <p className="text-muted-foreground">
+          View your booking information and payment status.
+        </p>
+      </div>
+      <div className="grid gap-6 md:grid-cols-2">
+        <div className="flex items-center gap-4 rounded-xl border p-5 shadow-sm">
+          <Image
+            src={booking.user.image.url}
+            alt={booking.user.image.public_id}
+            height={70}
+            width={70}
+            className="rounded-full object-cover"
+          />
+          <div>
+            <p className="text-sm text-muted-foreground">Booked by</p>
+            <p className="font-semibold capitalize">{booking.user.name}</p>
+            <p className="text-sm">{booking.user.email}</p>
           </div>
         </div>
-        <h4 className="capitalize">
-          Check in date: {new Date(booking.checkInDate).toLocaleDateString()}
-        </h4>
-        <h4 className="capitalize">
-          Check out date: {new Date(booking.checkOutDate).toLocaleDateString()}
-        </h4>
-        <h4 className="capitalize">
-          Number of days: <Badge>{booking.numberOfDays}</Badge>
-        </h4>
-        <h4 className="capitalize">
-          Adults: <Badge>{booking.adults}</Badge>
-        </h4>
-        <h4 className="capitalize">
-          Children: <Badge>{booking.childrens}</Badge>
-        </h4>
-        <h4 className="capitalize">
-          Total Price: <Badge>{booking.totalPrice}</Badge>
-        </h4>
-        <h4 className="capitalize">
-          Payment Result:{" "}
-          {booking.paymentResult.id |
-            booking.paymentResult.status |
-            booking.paymentResult.razorpay_order_id |
-            booking.paymentResult.razorpay_payment_id |
-            booking.paymentResult.razorpay_signature}
-        </h4>
-        <h4>
-          Status:
+        <div className="flex items-center gap-4 rounded-xl border p-5 shadow-sm">
+          <Image
+            src={booking.hotel.image[0].url}
+            alt={booking.hotel.image[0].public_id}
+            height={70}
+            width={70}
+            className="rounded object-cover"
+          />
+          <div>
+            <p className="text-sm text-muted-foreground">Hotel</p>
+            <p className="font-semibold">{booking.hotel.title}</p>
+          </div>
+        </div>
+      </div>
+      <div className="grid gap-6 md:grid-cols-3">
+        <div className="flex items-center gap-3 rounded-xl border p-5">
+          <Calendar size={20} />
+          <div>
+            <p className="text-sm text-muted-foreground">Check In</p>
+            <p className="font-medium">
+              {new Date(booking.checkInDate).toLocaleDateString()}
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-3 rounded-xl border p-5">
+          <Calendar size={20} />
+          <div>
+            <p className="text-sm text-muted-foreground">Check Out</p>
+            <p className="font-medium">
+              {new Date(booking.checkOutDate).toLocaleDateString()}
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-3 rounded-xl border p-5">
+          <Calendar size={20} />
+          <div>
+            <p className="text-sm text-muted-foreground">Total Days</p>
+            <p className="font-medium">{booking.numberOfDays}</p>
+          </div>
+        </div>
+      </div>
+      <div className="grid gap-6 md:grid-cols-3">
+        <div className="flex items-center gap-3 rounded-xl border p-5">
+          <Users size={20} />
+          <div>
+            <p className="text-sm text-muted-foreground">Adults</p>
+            <p className="font-medium">{booking.adults}</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-3 rounded-xl border p-5">
+          <Users size={20} />
+          <div>
+            <p className="text-sm text-muted-foreground">Children</p>
+            <p className="font-medium">{booking.childrens}</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-3 rounded-xl border p-5">
+          <CreditCard size={20} />
+          <div>
+            <p className="text-sm text-muted-foreground">Total Price</p>
+            <p className="text-lg font-bold text-primary">
+              ₹{booking.totalPrice}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="space-y-3 rounded-xl border p-6">
+        <h2 className="text-xl font-semibold">Payment Information</h2>
+        <p className="text-sm">
+          <span className="font-medium">Transaction ID:</span>{" "}
+          {booking.paymentResult.id}
+        </p>
+        <p className="text-sm">
+          <span className="font-medium">Payment Status:</span>{" "}
+          {booking.paymentResult.status}
+        </p>
+        <p className="text-sm">
+          <span className="font-medium">Order ID:</span>{" "}
+          {booking.paymentResult.razorpay_order_id}
+        </p>
+        <p className="text-sm">
+          <span className="font-medium">Payment ID:</span>{" "}
+          {booking.paymentResult.razorpay_payment_id}
+        </p>
+      </div>
+      <div className="flex flex-wrap gap-6">
+        <div>
+          <span className="mr-3 font-medium">Booking Status:</span>
           <Badge
             variant={
               booking.status === "pending"
@@ -76,22 +127,24 @@ const BookingDetails = ({booking}: {booking: IBooking}) => {
                 ? "success"
                 : "danger"
             }
-            className="ml-3"
+            className="uppercase"
           >
             {booking.status}
           </Badge>
-        </h4>
-        <h4>
-          Is Paid:
+        </div>
+        <div>
+          <span className="mr-3 font-medium">Payment:</span>
           <Badge
             variant={booking.isPaid ? "success" : "warning"}
-            className="ml-3"
+            className="uppercase"
           >
-            {booking.status ? "Paid" : "Not Paid"}
+            {booking.isPaid ? "Paid" : "Not Paid"}
           </Badge>
-        </h4>
-        <h4>Created at: {new Date(booking.createdAt).toLocaleDateString()}</h4>
-        <h4>Updated at: {new Date(booking.updatedAt).toLocaleDateString()}</h4>
+        </div>
+      </div>
+      <div className="flex items-center justify-between border-t pt-4 text-sm text-muted-foreground">
+        <p>Created: {new Date(booking.createdAt).toLocaleDateString()}</p>
+        <p>Updated: {new Date(booking.updatedAt).toLocaleDateString()}</p>
       </div>
     </div>
   );

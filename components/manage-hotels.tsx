@@ -7,7 +7,7 @@ import {Pen} from "lucide-react";
 import {IHotel} from "@/models/hotelModel";
 
 import DeleteHotel from "./delete-hotel";
-import Pagination from "./Pagination";
+import Pagination from "./pagination";
 import {Button} from "./ui/button";
 import {
   Table,
@@ -67,7 +67,6 @@ const ManageHotels = ({
                 <TableHead>Category</TableHead>
                 <TableHead>Price</TableHead>
                 <TableHead>Discount</TableHead>
-                <TableHead>Special Note</TableHead>
                 <TableHead>Dimension</TableHead>
                 <TableHead>Beds</TableHead>
                 <TableHead>Amenities</TableHead>
@@ -107,8 +106,10 @@ const ManageHotels = ({
                       <h4>{hotel.owner.email}</h4>
                     </DialogProvider>
                   </TableCell>
-                  <TableCell>{hotel.title}</TableCell>
-                  <TableCell>{hotel.description}</TableCell>
+                  <TableCell className="truncate">{hotel.title}</TableCell>
+                  <TableCell className="truncate">
+                    {hotel.description.substring(0, 75)}...
+                  </TableCell>
                   <TableCell>
                     <DialogProvider
                       trigger={
@@ -174,7 +175,6 @@ const ManageHotels = ({
                   </TableCell>
                   <TableCell>{hotel.price}</TableCell>
                   <TableCell>{hotel.discount}</TableCell>
-                  <TableCell>{hotel.specialNote}</TableCell>
                   <TableCell>{hotel.dimension}</TableCell>
                   <TableCell>{hotel.numberOfBeds}</TableCell>
                   <TableCell>{hotel.offeredAmenities.length}</TableCell>
@@ -185,13 +185,19 @@ const ManageHotels = ({
                   <TableCell>{hotel.address}</TableCell>
                   <TableCell>{hotel.latitude}</TableCell>
                   <TableCell>{hotel.longitude}</TableCell>
-                  <TableCell>
-                    <Badge variant={hotel.isBooked ? "success" : "warning"}>
+                  <TableCell className="truncate">
+                    <Badge
+                      variant={hotel.isBooked ? "success" : "warning"}
+                      className="uppercase"
+                    >
                       {hotel.isBooked ? "Booked" : "Not Booked"}
                     </Badge>
                   </TableCell>
-                  <TableCell>
-                    <Badge variant={hotel.isFeatured ? "success" : "danger"}>
+                  <TableCell className="truncate">
+                    <Badge
+                      variant={hotel.isFeatured ? "success" : "danger"}
+                      className="uppercase"
+                    >
                       {hotel.isFeatured ? "Featured" : "Not Featured"}
                     </Badge>
                   </TableCell>

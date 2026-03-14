@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import {IBooking} from "@/models/bookingModel";
 
-import Pagination from "./Pagination";
+import Pagination from "./pagination";
 import {
   Table,
   TableBody,
@@ -88,7 +88,7 @@ const Bookings = ({
                         href={`/booking/user/${booking.user._id}`}
                         className={buttonVariants()}
                       >
-                        user booking
+                        User Booking
                       </Link>
                     )}
                   </TableCell>
@@ -107,7 +107,7 @@ const Bookings = ({
                         href={`/booking/hotel/${booking.hotel._id}`}
                         className={buttonVariants()}
                       >
-                        hotel booking
+                        Hotel Booking
                       </Link>
                     )}
                   </TableCell>
@@ -136,12 +136,16 @@ const Bookings = ({
                           ? "danger"
                           : "warning"
                       }
+                      className="uppercase"
                     >
                       {booking.status}
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge variant={booking.isPaid ? "success" : "danger"}>
+                    <Badge
+                      variant={booking.isPaid ? "success" : "danger"}
+                      className="uppercase"
+                    >
                       {booking.isPaid ? "paid" : "not paid"}
                     </Badge>
                   </TableCell>

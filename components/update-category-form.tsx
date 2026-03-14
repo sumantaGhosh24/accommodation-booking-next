@@ -113,7 +113,7 @@ const UpdateCategoryForm = ({category}: Props) => {
             alt={category.image.public_id}
             height={200}
             width={500}
-            className="mb-5 w-full"
+            className="mb-5 h-[400px] w-full"
           />
         )}
         <div className="flex items-center gap-4">
@@ -160,7 +160,7 @@ const UpdateCategoryForm = ({category}: Props) => {
           )}
         />
         <Button type="submit" disabled={loading} className="max-w-fit">
-          {loading ? "Processing..." : "Create Category"}
+          {loading ? "Processing..." : "Update Category"}
         </Button>
       </form>
     </Form>

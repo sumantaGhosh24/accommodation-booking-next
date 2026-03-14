@@ -2,8 +2,8 @@
 
 import {IHotel} from "@/models/hotelModel";
 
-import Card from "./Card";
-import Pagination from "./Pagination";
+import Card from "./card";
+import Pagination from "./pagination";
 
 type CollectionProps = {
   data: IHotel[];
@@ -27,7 +27,7 @@ const Hotels = ({
     <>
       {data.length > 0 ? (
         <div className="flex flex-col items-center gap-10">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {data.map((hotel) => {
               return <Card hotel={hotel} key={hotel._id} />;
             })}

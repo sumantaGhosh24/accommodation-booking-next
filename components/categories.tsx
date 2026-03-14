@@ -6,7 +6,7 @@ import {Pen} from "lucide-react";
 
 import {ICategory} from "@/models/categoryModel";
 
-import Pagination from "./Pagination";
+import Pagination from "./pagination";
 import {Button} from "./ui/button";
 import {
   Table,

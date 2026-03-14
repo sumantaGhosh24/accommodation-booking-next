@@ -11,7 +11,7 @@ type CardProps = {
 
 const Card = ({hotel}: CardProps) => {
   return (
-    <div className="relative overflow-hidden rounded-lg bg-white p-4 shadow-md dark:bg-black">
+    <div className="relative overflow-hidden rounded-md bg-white p-4 shadow-md dark:bg-black dark:shadow-gray-400">
       <Link href={`/hotel/details/${hotel._id}`}>
         <Image
           src={hotel.image[0].url}
@@ -25,16 +25,14 @@ const Card = ({hotel}: CardProps) => {
         />
       </Link>
       <div className="mb-4 flex gap-2">
-        <Badge>₹ {hotel.price}</Badge>
+        <Badge>₹ {Number(hotel.price) - Number(hotel.discount)}</Badge>
         <Badge className="line-clamp-1" variant="secondary">
           {hotel.category.name}
         </Badge>
       </div>
       <Link href={`/hotel/details/${hotel._id}`}>
         <p className="mb-2 text-xl font-bold capitalize">{hotel.title}</p>
-        <p className="mb-2 text-base font-bold capitalize">
-          {hotel.description}
-        </p>
+        <p className="mb-2 text-sm font-medium">{hotel.description}</p>
       </Link>
     </div>
   );

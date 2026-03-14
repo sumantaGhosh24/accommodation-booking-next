@@ -12,37 +12,56 @@ interface UserDetailsProps {
 
 const UserDetails = ({user}: UserDetailsProps) => {
   return (
-    <div className="my-10 flex w-full items-center justify-center">
-      <div className="w-[95%] space-y-4 rounded-lg p-5 shadow-lg shadow-black dark:shadow-white">
-        <h1 className="mb-5 text-2xl font-bold">Your Details</h1>
-        <div className="mb-5 md:mb-0">
-          <h2 className="text-2xl font-bold capitalize">{user.name}</h2>
-          <h3 className="mt-5 text-xl">{user.username}</h3>
-        </div>
-        <div className="mx-auto w-[65%]">
+    <div className="my-10 rounded-md p-8 shadow-md dark:shadow-gray-400">
+      <div className="flex flex-col items-center gap-4 pb-6">
+        <div className="relative h-36 w-36 overflow-hidden rounded-full border-4 border-neutral-200 dark:border-neutral-700">
           <Image
             src={user.image.url}
             alt={user.image.public_id}
-            height={200}
-            width={100}
-            className="h-[350px] w-full rounded"
+            fill
+            className="object-cover"
           />
         </div>
-        <h4 className="capitalize">Email: {user.email}</h4>
-        <h4 className="capitalize">Mobile number: {user.mobileNumber}</h4>
-        <h4 className="capitalize">
-          DOB: {new Date(user.dob).toLocaleDateString()}
-        </h4>
-        <h4 className="capitalize">Gender: {user.gender}</h4>
-        <h4 className="capitalize">City: {user.city}</h4>
-        <h4 className="capitalize">State: {user.state}</h4>
-        <h4 className="capitalize">Country: {user.country}</h4>
-        <h4 className="capitalize">Zip: {user.zip}</h4>
-        <h4 className="capitalize">Addressline: {user.addressline}</h4>
-        <h4>Created at: {new Date(user.createdAt).toLocaleDateString()}</h4>
-        <h4>Updated at: {new Date(user.updatedAt).toLocaleDateString()}</h4>
-        {user.role === "admin" && <Badge>ADMIN</Badge>}
+        <div className="text-center">
+          <h1 className="text-2xl font-bold capitalize">{user.name}</h1>
+          <p className="text-neutral-500">@{user.username}</p>
+        </div>
+        {user.role === "admin" && (
+          <Badge className="px-3 py-1 text-sm">ADMIN</Badge>
+        )}
       </div>
+      <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <ProfileItem label="Email" value={user.email} />
+        <ProfileItem label="Mobile" value={user.mobileNumber} />
+        <ProfileItem
+          label="DOB"
+          value={new Date(user.dob).toLocaleDateString()}
+        />
+        <ProfileItem label="Gender" value={user.gender} />
+        <ProfileItem label="City" value={user.city} />
+        <ProfileItem label="State" value={user.state} />
+        <ProfileItem label="Country" value={user.country} />
+        <ProfileItem label="Zip Code" value={user.zip} />
+        <ProfileItem label="Address" value={user.addressline} />
+      </div>
+      <div className="mt-8 flex items-center justify-between pt-4 text-sm text-neutral-500">
+        <p>Created: {new Date(user.createdAt).toLocaleDateString()}</p>
+        <p>Updated: {new Date(user.updatedAt).toLocaleDateString()}</p>
+      </div>
+    </div>
+  );
+};
+
+interface ProfileItemProps {
+  label: string;
+  value?: string | number;
+}
+
+const ProfileItem = ({label, value}: ProfileItemProps) => {
+  return (
+    <div className="rounded-lg border p-4 dark:border-neutral-800">
+      <p className="text-sm text-neutral-500">{label}</p>
+      <p className="font-medium capitalize">{value || "-"}</p>
     </div>
   );
 };

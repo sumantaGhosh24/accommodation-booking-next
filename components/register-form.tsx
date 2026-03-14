@@ -150,279 +150,299 @@ const RegisterForm = () => {
               />
             </div>
           </div>
-          <FormField
-            control={form.control}
-            name="email"
-            render={({field}) => (
-              <FormItem className="flex w-full flex-col gap-3">
-                <FormLabel className="text-base font-semibold">
-                  Email Address
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    type="email"
-                    className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
-                    placeholder="Enter user email"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="password"
-            render={({field}) => (
-              <FormItem className="flex w-full flex-col gap-3">
-                <FormLabel className="text-base font-semibold">
-                  Password
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    type="password"
-                    className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
-                    placeholder="Enter user password"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="cf_password"
-            render={({field}) => (
-              <FormItem className="flex w-full flex-col gap-3">
-                <FormLabel className="text-base font-semibold">
-                  Confirm Password
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    type="password"
-                    className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
-                    placeholder="Enter user confirm password"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="mobileNumber"
-            render={({field}) => (
-              <FormItem className="flex w-full flex-col gap-3">
-                <FormLabel className="text-base font-semibold">
-                  Mobile Number
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
-                    placeholder="Enter user mobile number"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="name"
-            render={({field}) => (
-              <FormItem className="flex w-full flex-col gap-3">
-                <FormLabel className="text-base font-semibold">Name</FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
-                    placeholder="Enter user name"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="username"
-            render={({field}) => (
-              <FormItem className="flex w-full flex-col gap-3">
-                <FormLabel className="text-base font-semibold">
-                  Username
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
-                    placeholder="Enter user username"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="dob"
-            render={({field}) => (
-              <FormItem className="flex flex-col">
-                <FormLabel>Date of birth</FormLabel>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button variant="date">
-                        {field.value ? (
-                          format(field.value, "PPP")
-                        ) : (
-                          <span>Pick a date</span>
-                        )}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={field.value}
-                      onSelect={field.onChange}
-                      disabled={(date) =>
-                        date > new Date() || date < new Date("1900-01-01")
-                      }
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="gender"
-            render={({field}) => (
-              <FormItem className="flex w-full flex-col gap-3">
-                <FormLabel className="text-base font-semibold">
-                  Gender
-                </FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
+          <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({field}) => (
+                <FormItem className="flex w-full flex-col gap-3">
+                  <FormLabel className="text-base font-semibold">
+                    Email Address
+                  </FormLabel>
                   <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select your gender" />
-                    </SelectTrigger>
+                    <Input
+                      type="email"
+                      className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+                      placeholder="Enter user email"
+                      {...field}
+                    />
                   </FormControl>
-                  <SelectContent>
-                    <SelectItem value={"male"}>Male</SelectItem>
-                    <SelectItem value={"female"}>Female</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="city"
-            render={({field}) => (
-              <FormItem className="flex w-full flex-col gap-3">
-                <FormLabel className="text-base font-semibold">City</FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
-                    placeholder="Enter user city"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="state"
-            render={({field}) => (
-              <FormItem className="flex w-full flex-col gap-3">
-                <FormLabel className="text-base font-semibold">State</FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
-                    placeholder="Enter user state"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="country"
-            render={({field}) => (
-              <FormItem className="flex w-full flex-col gap-3">
-                <FormLabel className="text-base font-semibold">
-                  Country
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
-                    placeholder="Enter user country"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="zip"
-            render={({field}) => (
-              <FormItem className="flex w-full flex-col gap-3">
-                <FormLabel className="text-base font-semibold">Zip</FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
-                    placeholder="Enter user zip"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="addressline"
-            render={({field}) => (
-              <FormItem className="flex w-full flex-col gap-3">
-                <FormLabel className="text-base font-semibold">
-                  Addressline
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
-                    placeholder="Enter user addressline"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="mobileNumber"
+              render={({field}) => (
+                <FormItem className="flex w-full flex-col gap-3">
+                  <FormLabel className="text-base font-semibold">
+                    Mobile Number
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+                      placeholder="Enter user mobile number"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
+            <FormField
+              control={form.control}
+              name="password"
+              render={({field}) => (
+                <FormItem className="flex w-full flex-col gap-3">
+                  <FormLabel className="text-base font-semibold">
+                    Password
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      type="password"
+                      className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+                      placeholder="Enter user password"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="cf_password"
+              render={({field}) => (
+                <FormItem className="flex w-full flex-col gap-3">
+                  <FormLabel className="text-base font-semibold">
+                    Confirm Password
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      type="password"
+                      className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+                      placeholder="Enter user confirm password"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({field}) => (
+                <FormItem className="flex w-full flex-col gap-3">
+                  <FormLabel className="text-base font-semibold">
+                    Name
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+                      placeholder="Enter user name"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="username"
+              render={({field}) => (
+                <FormItem className="flex w-full flex-col gap-3">
+                  <FormLabel className="text-base font-semibold">
+                    Username
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+                      placeholder="Enter user username"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
+            <FormField
+              control={form.control}
+              name="dob"
+              render={({field}) => (
+                <FormItem className="flex w-full flex-col">
+                  <FormLabel className="mb-3 font-bold">
+                    Date of birth
+                  </FormLabel>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button variant="date">
+                          {field.value ? (
+                            format(field.value, "PPP")
+                          ) : (
+                            <span>Pick a date</span>
+                          )}
+                          <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={field.value}
+                        onSelect={field.onChange}
+                        disabled={(date) =>
+                          date > new Date() || date < new Date("1900-01-01")
+                        }
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="gender"
+              render={({field}) => (
+                <FormItem className="flex w-full flex-col gap-3">
+                  <FormLabel className="text-base font-semibold">
+                    Gender
+                  </FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select your gender" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value={"male"}>Male</SelectItem>
+                      <SelectItem value={"female"}>Female</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
+            <FormField
+              control={form.control}
+              name="city"
+              render={({field}) => (
+                <FormItem className="flex w-full flex-col gap-3">
+                  <FormLabel className="text-base font-semibold">
+                    City
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+                      placeholder="Enter user city"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="state"
+              render={({field}) => (
+                <FormItem className="flex w-full flex-col gap-3">
+                  <FormLabel className="text-base font-semibold">
+                    State
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+                      placeholder="Enter user state"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="country"
+              render={({field}) => (
+                <FormItem className="flex w-full flex-col gap-3">
+                  <FormLabel className="text-base font-semibold">
+                    Country
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+                      placeholder="Enter user country"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
+            <FormField
+              control={form.control}
+              name="zip"
+              render={({field}) => (
+                <FormItem className="flex w-full flex-col gap-3">
+                  <FormLabel className="text-base font-semibold">Zip</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+                      placeholder="Enter user zip"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="addressline"
+              render={({field}) => (
+                <FormItem className="flex w-full flex-col gap-3">
+                  <FormLabel className="text-base font-semibold">
+                    Addressline
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+                      placeholder="Enter user addressline"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
           <Button type="submit" disabled={loading} className="max-w-fit">
             {loading ? "Processing..." : "Register"}
           </Button>

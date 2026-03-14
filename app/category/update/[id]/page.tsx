@@ -13,9 +13,9 @@ const UpdateCategory = async ({params}: {params: {id: string}}) => {
   if (!category) redirect("/category");
 
   return (
-    <div className="my-20 flex min-h-screen w-full items-center justify-center">
-      <div className="min-w-[60%] space-y-4 rounded-lg p-5 shadow-lg shadow-black dark:shadow-white">
-        <UpdateCategoryForm category={category} />
+    <div className="flex min-h-screen w-full items-center justify-center">
+      <div className="container mx-auto my-10 space-y-4 rounded-md p-5 shadow-md dark:shadow-gray-400">
+        <UpdateCategoryForm category={JSON.parse(JSON.stringify(category))} />
       </div>
     </div>
   );

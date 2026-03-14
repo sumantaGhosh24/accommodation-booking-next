@@ -7,7 +7,7 @@ export const metadata = {
 const CreateCategory = () => {
   return (
     <div className="flex min-h-screen w-full items-center justify-center">
-      <div className="min-w-[60%] space-y-4 rounded-lg p-5 shadow-lg shadow-black dark:shadow-white">
+      <div className="container mx-auto space-y-4 rounded-md p-5 shadow-md dark:shadow-gray-400">
         <CreateCategoryForm />
       </div>
     </div>

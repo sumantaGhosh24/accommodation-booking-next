@@ -32,7 +32,7 @@ const BookHotelForm = ({hotel, user}: BookHotelFormProps) => {
       return;
     }
 
-    if (Number(adults) == 0) {
+    if (Number(adults) === 0) {
       toast.error("Al least on adult required");
       return;
     }
@@ -77,12 +77,14 @@ const BookHotelForm = ({hotel, user}: BookHotelFormProps) => {
           },
         });
         const res = await data.json();
+        // eslint-disable-next-line eqeqeq
         if (res?.message == "success") {
           console.log("redirected.......");
           router.push("/profile");
         }
       },
     };
+    // @ts-ignore
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
     paymentObject.on("payment.failed", function () {
@@ -91,62 +93,61 @@ const BookHotelForm = ({hotel, user}: BookHotelFormProps) => {
   };
 
   return (
-    <div className="my-10 flex w-full items-center justify-center">
-      <div className="w-[95%] space-y-4 rounded-lg p-5 shadow-lg shadow-black dark:shadow-white">
-        <div className="flex flex-col gap-5 md:flex-row">
-          <div className="w-full">
-            <h4>Check in date</h4>
-            <Input
-              type="date"
-              className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
-              placeholder="Enter check in date"
-              value={checkInDate}
-              onChange={(e) => setCheckInDate(e.target.value)}
-            />
-          </div>
-          <div className="w-full">
-            <h4>Check out date</h4>
-            <Input
-              type="date"
-              className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
-              placeholder="Enter check out date"
-              value={checkOutDate}
-              onChange={(e) => setCheckOutDate(e.target.value)}
-            />
-          </div>
+    <div className="container mx-auto my-10 space-y-4 rounded-md p-5 shadow-md dark:shadow-gray-400">
+      <h1 className="mb-5 text-2xl font-bold">Book Hotel</h1>
+      <div className="flex flex-col gap-5 md:flex-row">
+        <div className="w-full">
+          <h4 className="mb-3">Check in date</h4>
+          <Input
+            type="date"
+            className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+            placeholder="Enter check in date"
+            value={checkInDate}
+            onChange={(e) => setCheckInDate(e.target.value)}
+          />
         </div>
-        <div className="flex flex-col gap-5 md:flex-row">
-          <div className="w-full">
-            <h4>Total adult</h4>
-            <Input
-              type="text"
-              className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
-              placeholder="Enter adults count"
-              value={adults}
-              onChange={(e) => setAdults(e.target.value)}
-            />
-          </div>
-          <div className="w-full">
-            <h4>Total children</h4>
-            <Input
-              type="text"
-              className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
-              placeholder="Enter childrens count"
-              value={childrens}
-              onChange={(e) => setChildrens(e.target.value)}
-            />
-          </div>
+        <div className="w-full">
+          <h4 className="mb-3">Check out date</h4>
+          <Input
+            type="date"
+            className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+            placeholder="Enter check out date"
+            value={checkOutDate}
+            onChange={(e) => setCheckOutDate(e.target.value)}
+          />
         </div>
-        <Button
-          type="submit"
-          role="link"
-          size="lg"
-          className="ml-5 mt-5 sm:w-fit"
-          onClick={() => makePayment()}
-        >
-          Start Booking
-        </Button>
       </div>
+      <div className="flex flex-col gap-5 md:flex-row">
+        <div className="w-full">
+          <h4 className="mb-3">Total adult</h4>
+          <Input
+            type="text"
+            className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+            placeholder="Enter adults count"
+            value={adults}
+            onChange={(e) => setAdults(e.target.value)}
+          />
+        </div>
+        <div className="w-full">
+          <h4 className="mb-3">Total children</h4>
+          <Input
+            type="text"
+            className="bg-gray-200 focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+            placeholder="Enter childrens count"
+            value={childrens}
+            onChange={(e) => setChildrens(e.target.value)}
+          />
+        </div>
+      </div>
+      <Button
+        type="submit"
+        role="link"
+        size="lg"
+        className="mt-5 sm:w-fit"
+        onClick={() => makePayment()}
+      >
+        Start Booking
+      </Button>
     </div>
   );
 };

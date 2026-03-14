@@ -20,7 +20,7 @@ const UpdateHotel = async ({params}: {params: {id: string}}) => {
 
   return (
     <>
-      <Tabs defaultValue="update-hotel" className="w-full">
+      <Tabs defaultValue="update-hotel" className="container mx-auto w-full">
         <TabsList className="mx-10 mt-10 grid grid-cols-3">
           <TabsTrigger value="update-hotel">Update Hotel</TabsTrigger>
           <TabsTrigger value="add-image">Add Hotel Image</TabsTrigger>

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import {IUser} from "@/models/userModel";
 
-import Pagination from "./Pagination";
+import Pagination from "./pagination";
 import {
   Table,
   TableBody,
