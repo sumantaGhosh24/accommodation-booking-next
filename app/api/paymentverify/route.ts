@@ -2,7 +2,7 @@ import {NextResponse} from "next/server";
 import crypto from "crypto";
 
 import connectDB from "@/libs/db";
-import BookingModel from "@/models/BookingModel";
+import BookingModel from "@/models/bookingModel";
 
 export async function POST(req: Request, res: Response) {
   const {
