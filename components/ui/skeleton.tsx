@@ -1,3 +1,5 @@
+import React from "react";
+
 import {cn} from "@/libs/utils";
 
 function Skeleton({className, ...props}: React.HTMLAttributes<HTMLDivElement>) {
